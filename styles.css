@@ -725,6 +725,10 @@ body {
 }
 
 /* Contact */
+#contact .section-title {
+    margin-bottom: 28px;
+}
+
 .contact-item {
     padding: 20px;
     transition: all 0.3s ease;
@@ -734,6 +738,7 @@ body {
     font-size: 1rem;
     color: #555;
     text-align: center;
+    margin-bottom: 28px !important;
 }
 
 .contact-item i {
