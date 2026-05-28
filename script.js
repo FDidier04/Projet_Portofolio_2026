@@ -91,8 +91,8 @@ const observer = new IntersectionObserver(function(entries) {
     });
 }, observerOptions);
 
-// Observe all cards
-document.querySelectorAll('.service-card, .competence-group, .education-card, .contact-card').forEach(card => {
+// Observe sections/cards without overriding service-card hover transforms.
+document.querySelectorAll('.service-item, .competence-group, .education-card, .contact-card').forEach(card => {
     observer.observe(card);
 });
 
@@ -164,3 +164,61 @@ document.getElementById('scrollTopBtn').addEventListener('click', () => {
         behavior: 'smooth'
     });
 });
+
+// Proximity zoom: handle project cards.
+function initProximityZoom() {
+    const groups = [
+        { container: document.querySelector('.projects-section') || document.getElementById('projects'), selector: '.project-card', maxDist: 320 }
+    ];
+
+    groups.forEach(group => {
+        if (!group.container) return;
+        const cards = group.container.querySelectorAll(group.selector);
+        if (!cards || cards.length === 0) return;
+
+        let mouseX = -9999, mouseY = -9999;
+        let rafId = null;
+
+        group.container.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            if (!rafId) rafId = requestAnimationFrame(() => update(cards, mouseX, mouseY, group.maxDist));
+        });
+
+        group.container.addEventListener('mouseleave', () => {
+            cards.forEach(c => {
+                c.style.transform = '';
+                c.style.zIndex = '';
+                c.classList.remove('prox-highlight');
+            });
+        });
+
+        function update(cardsRef, mx, my, maxDist) {
+            cardsRef.forEach(card => {
+                const r = card.getBoundingClientRect();
+                const cx = r.left + r.width / 2;
+                const cy = r.top + r.height / 2;
+                const dx = mx - cx;
+                const dy = my - cy;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                const minScale = 1;
+                const maxScale = 1.12;
+                let scale = minScale;
+
+                if (dist < maxDist) {
+                    const t = 1 - dist / maxDist;
+                    scale = minScale + (maxScale - minScale) * Math.pow(t, 1.2);
+                }
+
+                card.style.transform = `scale(${scale})`;
+                card.style.zIndex = scale > 1.01 ? '5' : '1';
+                if (scale > 1.03) card.classList.add('prox-highlight'); else card.classList.remove('prox-highlight');
+            });
+
+            rafId = null;
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initProximityZoom);
