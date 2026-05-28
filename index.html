@@ -18,6 +18,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#services">SERVICES</a></li>
                     <li class="nav-item"><a class="nav-link" href="#competences">COMPÉTENCES</a></li>
                     <li class="nav-item"><a class="nav-link" href="#experiences">EXPÉRIENCES</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">PROJETS</a></li>
@@ -35,9 +36,9 @@
                 <div class="col-lg-8 text-center">
                     <h1 class="hero-title">BIENVENUE SUR MON PORTFOLIO</h1>
                     <p class="hero-description">Consultant technico-fonctionnel passionné depuis plus de 2 ans, avec une expertise particulière pour l'Invoice Automation et la solution Basware. J'aime accompagner les entreprises dans la transformation de leurs processus P2P et l'optimisation de leurs processus financiers.</p>
-                    <div class="scroll-indicator">
+                    <a href="#introduction" class="scroll-indicator">
                         <i class="fas fa-chevron-down"></i>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -66,41 +67,41 @@
     <section id="services" class="py-section">
         <div class="container">
             <h2 class="section-title">Services</h2>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3">
+            <div class="services-row">
+                <div class="service-item">
                     <div class="service-card h-100">
-                        <div class="service-icon">
+                        <div class="service-image">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="service-title">Développement Web</h3>
+                        <p class="service-description">Création de sites et d'interfaces modernes, responsive et performants. Intégration front-end professionnelle.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-card h-100">
+                        <div class="service-image">
                             <i class="fas fa-file-invoice-dollar"></i>
                         </div>
                         <h3 class="service-title">Invoice Automation</h3>
                         <p class="service-description">Dématérialisation des factures fournisseurs via Basware. Optimisation des processus P2P et conformité réglementaire.</p>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3">
+                <div class="service-item">
                     <div class="service-card h-100">
-                        <div class="service-icon">
+                        <div class="service-image">
                             <i class="fas fa-database"></i>
                         </div>
                         <h3 class="service-title">Data Analytics</h3>
                         <p class="service-description">Migration et optimisation de rapports. Exploitation des données pour décisions métier.</p>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3">
+                <div class="service-item">
                     <div class="service-card h-100">
-                        <div class="service-icon">
+                        <div class="service-image">
                             <i class="fas fa-cloud"></i>
                         </div>
                         <h3 class="service-title">Cloud & Integration</h3>
                         <p class="service-description">Migration d'infrastructures, déploiement ETL et APIs d'intégration.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card h-100">
-                        <div class="service-icon">
-                            <i class="fas fa-sync-alt"></i>
-                        </div>
-                        <h3 class="service-title">Transformation Digitale</h3>
-                        <p class="service-description">Accompagnement dans la Réforme de la Facture Électronique et l'optimisation processuelle.</p>
                     </div>
                 </div>
             </div>
@@ -281,29 +282,17 @@
         <div class="container">
             <h2 class="section-title">Contact</h2>
             
-            <div class="row g-4 mb-5">
-                <div class="col-md-4 text-center">
-                    <div class="contact-item">
-                        <i class="fas fa-phone fa-2x mb-3"></i>
-                        <p><a href="tel:+33753287368">07 53 28 73 68</a></p>
+            <div class="row g-4 align-items-start mb-5">
+                <div class="col-lg-6">
+                    <div class="contact-map">
+                        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=2.5323%2C48.8247%2C2.6077%2C48.8643&amp;layer=mapnik&amp;marker=48.8445%2C2.5704" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <div class="contact-location mt-3 text-center">
+                        <i class="fas fa-map-marker-alt fa-2x mb-2"></i>
+                        <p>Champs-sur-Marne 77420</p>
                     </div>
                 </div>
-                <div class="col-md-4 text-center">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope fa-2x mb-3"></i>
-                        <p><a href="mailto:firstdidier5@gmail.com">firstdidier5@gmail.com</a></p>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt fa-2x mb-3"></i>
-                        <p>Paris 75116</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-6 mx-auto">
+                <div class="col-lg-6">
                     <form class="contact-form" id="contactForm">
                         <div class="row g-3">
                             <div class="col-md-6">
