@@ -818,8 +818,22 @@ body {
 }
 
 /* Contact */
+#contact {
+    background: linear-gradient(135deg, rgba(20, 24, 28, 0.78), rgba(20, 24, 28, 0.68)),
+                url('assets/images/hero-background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+}
+
 #contact .section-title {
+    color: white;
     margin-bottom: 28px;
+}
+
+#contact .section-title::after {
+    background: white;
 }
 
 .contact-item {
@@ -829,7 +843,7 @@ body {
 
 .contact-note {
     font-size: 1rem;
-    color: #555;
+    color: rgba(255, 255, 255, 0.88);
     text-align: center;
     margin-bottom: 28px !important;
 }
@@ -859,7 +873,7 @@ body {
 }
 
 .contact-location {
-    background: white;
+    background: rgba(255, 255, 255, 0.94);
     padding: 20px;
     border-radius: var(--border-radius);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -887,10 +901,11 @@ body {
 }
 
 .contact-form {
-    background: white;
+    background: rgba(255, 255, 255, 0.94);
     padding: 40px;
     border-radius: var(--border-radius);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(4px);
 }
 
 .contact-form .form-control {
