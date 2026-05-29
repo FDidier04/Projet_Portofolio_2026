@@ -563,18 +563,11 @@ body {
     line-height: 1.6;
 }
 
-/* Skills */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 18px;
-}
-
 .skill-card {
+    flex: 0 0 140px;
     min-height: 138px;
     background: white;
     border-radius: var(--border-radius);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -628,8 +621,14 @@ body {
 
 .skills-carousel {
     display: flex;
-    animation: scroll 30s linear infinite;
+    gap: 18px;
+    animation: scroll 34s linear infinite;
     width: fit-content;
+    padding: 0 18px;
+}
+
+.skills-carousel-container:hover .skills-carousel {
+    animation-play-state: paused;
 }
 
 .skill-item-carousel {
@@ -1001,12 +1000,8 @@ footer {
         padding: 15px;
     }
 
-    .skills-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
-    }
-
     .skill-card {
+        flex-basis: 128px;
         min-height: 124px;
         padding: 18px 10px;
     }
