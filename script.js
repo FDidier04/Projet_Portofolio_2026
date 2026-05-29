@@ -178,6 +178,7 @@ function initSkillsSlider() {
 
     let currentIndex = 0;
     let visibleCount = getVisibleCount();
+    let autoplayId = null;
 
     function getVisibleCount() {
         return window.matchMedia('(max-width: 768px)').matches ? 1 : 3;
@@ -227,6 +228,26 @@ function initSkillsSlider() {
         updateSlider();
     });
 
+    function startAutoplay() {
+        stopAutoplay();
+        autoplayId = window.setInterval(() => {
+            currentIndex = currentIndex >= getMaxIndex() ? 0 : currentIndex + 1;
+            updateSlider();
+        }, 2600);
+    }
+
+    function stopAutoplay() {
+        if (autoplayId) {
+            window.clearInterval(autoplayId);
+            autoplayId = null;
+        }
+    }
+
+    slider.addEventListener('mouseenter', stopAutoplay);
+    slider.addEventListener('mouseleave', startAutoplay);
+    slider.addEventListener('focusin', stopAutoplay);
+    slider.addEventListener('focusout', startAutoplay);
+
     window.addEventListener('resize', () => {
         const nextVisibleCount = getVisibleCount();
         if (nextVisibleCount !== visibleCount) {
@@ -239,6 +260,7 @@ function initSkillsSlider() {
 
     renderDots();
     updateSlider();
+    startAutoplay();
 }
 
 // Proximity zoom: handle project cards.
