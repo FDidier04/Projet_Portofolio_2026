@@ -53,8 +53,8 @@ body {
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, rgba(30, 30, 30, 0.8) 0%, rgba(50, 50, 50, 0.8) 100%),
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><defs><filter id="blur"><feGaussianBlur in="SourceGraphic" stdDeviation="3"/></filter></defs><rect fill="%23404040" width="1920" height="1080"/><ellipse cx="200" cy="200" rx="250" ry="200" fill="%235a5a5a" opacity="0.2" filter="url(%23blur)"/><rect x="1400" y="800" width="450" height="250" fill="%23555" opacity="0.15" filter="url(%23blur)"/><path d="M 0 700 Q 400 650 800 700 T 1600 700 L 1920 1080 L 0 1080 Z" fill="%23353535" opacity="0.1"/></svg>');
+    background: linear-gradient(135deg, rgba(20, 24, 28, 0.72), rgba(20, 24, 28, 0.62)),
+                url('assets/images/hero-background.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
