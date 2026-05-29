@@ -219,6 +219,18 @@ body {
     transform: translateY(-4px);
 }
 
+#formations {
+    padding-bottom: 34px;
+}
+
+#formations .section-arrow {
+    margin-top: 18px;
+}
+
+#projects {
+    padding-top: 34px;
+}
+
 .section-subtitle {
     font-size: 1.3rem;
     font-weight: 700;
