@@ -165,6 +165,82 @@ document.getElementById('scrollTopBtn').addEventListener('click', () => {
     });
 });
 
+function initSkillsSlider() {
+    const slider = document.querySelector('.skills-slider');
+    if (!slider) return;
+
+    const track = slider.querySelector('.skills-carousel');
+    const cards = Array.from(slider.querySelectorAll('.skill-card'));
+    const prevBtn = slider.querySelector('.skills-arrow-prev');
+    const nextBtn = slider.querySelector('.skills-arrow-next');
+    const dotsWrap = slider.querySelector('.skills-dots');
+    if (!track || cards.length === 0 || !prevBtn || !nextBtn || !dotsWrap) return;
+
+    let currentIndex = 0;
+    let visibleCount = getVisibleCount();
+
+    function getVisibleCount() {
+        return window.matchMedia('(max-width: 768px)').matches ? 1 : 3;
+    }
+
+    function getMaxIndex() {
+        return Math.max(cards.length - visibleCount, 0);
+    }
+
+    function getStepSize() {
+        if (cards.length < 2) return cards[0].offsetWidth;
+        return cards[1].offsetLeft - cards[0].offsetLeft;
+    }
+
+    function renderDots() {
+        dotsWrap.innerHTML = '';
+        const dotCount = getMaxIndex() + 1;
+        for (let i = 0; i < dotCount; i++) {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'skills-dot';
+            dot.setAttribute('aria-label', `Afficher la compétence ${i + 1}`);
+            dot.addEventListener('click', () => {
+                currentIndex = i;
+                updateSlider();
+            });
+            dotsWrap.appendChild(dot);
+        }
+    }
+
+    function updateSlider() {
+        currentIndex = Math.min(Math.max(currentIndex, 0), getMaxIndex());
+        track.style.transform = `translateX(-${currentIndex * getStepSize()}px)`;
+
+        dotsWrap.querySelectorAll('.skills-dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    prevBtn.addEventListener('click', () => {
+        currentIndex = currentIndex <= 0 ? getMaxIndex() : currentIndex - 1;
+        updateSlider();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentIndex = currentIndex >= getMaxIndex() ? 0 : currentIndex + 1;
+        updateSlider();
+    });
+
+    window.addEventListener('resize', () => {
+        const nextVisibleCount = getVisibleCount();
+        if (nextVisibleCount !== visibleCount) {
+            visibleCount = nextVisibleCount;
+            currentIndex = 0;
+            renderDots();
+        }
+        updateSlider();
+    });
+
+    renderDots();
+    updateSlider();
+}
+
 // Proximity zoom: handle project cards.
 function initProximityZoom() {
     const groups = [
@@ -222,3 +298,4 @@ function initProximityZoom() {
 }
 
 document.addEventListener('DOMContentLoaded', initProximityZoom);
+document.addEventListener('DOMContentLoaded', initSkillsSlider);

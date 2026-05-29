@@ -576,98 +576,107 @@ body {
 }
 
 .skill-card {
-    flex: 0 0 140px;
-    min-height: 138px;
-    background: white;
-    border-radius: var(--border-radius);
+    flex: 0 0 calc((100% - 120px) / 3);
+    min-height: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 14px;
-    padding: 22px 14px;
+    padding: 10px 14px;
     text-align: center;
-    transition: transform 0.28s ease, box-shadow 0.28s ease;
+    transition: transform 0.28s ease;
 }
 
 .skill-card:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
+    transform: translateY(-6px) scale(1.03);
 }
 
 .skill-card img {
-    width: 54px;
-    height: 54px;
+    width: 86px;
+    height: 86px;
     object-fit: contain;
 }
 
 .skill-card span:last-child {
     font-weight: 700;
-    font-size: 0.92rem;
+    font-size: 1.05rem;
     color: var(--dark-color);
 }
 
-.skills-carousel-container {
+.skills-slider {
     width: 100%;
+    position: relative;
+    padding: 0 74px 44px;
+}
+
+.skills-viewport {
     overflow: hidden;
-    background: white;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    padding: 30px 0;
 }
 
 .skills-carousel {
     display: flex;
-    gap: 18px;
-    animation: scroll 34s linear infinite;
-    width: fit-content;
-    padding: 0 18px;
+    gap: 60px;
+    transition: transform 0.45s ease;
+    will-change: transform;
 }
 
-.skills-carousel-container:hover .skills-carousel {
-    animation-play-state: paused;
-}
-
-.skill-item-carousel {
-    display: flex;
-    flex-direction: column;
+.skills-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-70%);
+    width: 48px;
+    height: 48px;
+    border: 0;
+    background: transparent;
+    color: var(--dark-color);
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 140px;
-    padding: 20px;
-    text-align: center;
-    transition: all 0.3s ease;
+    font-size: 2.1rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+    z-index: 2;
 }
 
-.skill-item-carousel:hover {
+.skills-arrow:hover {
     color: var(--primary-color);
-    transform: scale(1.1);
+    transform: translateY(-70%) scale(1.08);
 }
 
-.skill-item-carousel i {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 10px;
-    transition: all 0.3s ease;
+.skills-arrow-prev {
+    left: 0;
 }
 
-.skill-item-carousel:hover i {
-    font-size: 3rem;
+.skills-arrow-next {
+    right: 0;
 }
 
-.skill-item-carousel span {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--dark-color);
+.skills-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
+.skills-dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    background: white;
+    padding: 0;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.skills-dot.active,
+.skills-dot:hover {
+    background: var(--primary-color);
+    transform: scale(1.08);
 }
 
 /* Expériences */
@@ -992,20 +1001,40 @@ footer {
         font-size: 0.82rem;
     }
 
-    .skill-item-carousel {
-        min-width: 120px;
-        padding: 15px;
-    }
-
     .skill-card {
-        flex-basis: 128px;
-        min-height: 124px;
+        flex: 0 0 100%;
+        min-height: 132px;
         padding: 18px 10px;
     }
 
     .skill-card img {
-        width: 46px;
-        height: 46px;
+        width: 64px;
+        height: 64px;
+    }
+
+    .skills-slider {
+        padding: 0 48px 44px;
+    }
+
+    .skills-carousel {
+        gap: 0;
+    }
+
+    .skills-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 1.7rem;
+    }
+
+    .skills-dots {
+        max-width: 82%;
+        gap: 8px;
+    }
+
+    .skills-dot {
+        width: 11px;
+        height: 11px;
+        border-width: 2px;
     }
 
     .py-section {
