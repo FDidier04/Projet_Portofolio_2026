@@ -579,6 +579,17 @@ body {
     color: #666;
     font-size: 0.95rem;
     line-height: 1.6;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.service-description li {
+    margin-bottom: 8px;
+}
+
+.service-description li:last-child {
+    margin-bottom: 0;
 }
 
 .skill-card {
